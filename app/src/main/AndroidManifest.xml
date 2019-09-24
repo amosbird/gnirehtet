@@ -21,6 +21,16 @@
             </intent-filter>
         </activity>
 
+        <receiver
+            android:name="com.genymobile.gnirehtet.GnirehtetControlReceiver"
+            android:exported="true"
+            android:permission="android.permission.WRITE_SECURE_SETTINGS">
+            <intent-filter>
+                <action android:name="com.genymobile.gnirehtet.CLIP_GET" />
+                <action android:name="com.genymobile.gnirehtet.CLIP_SET" />
+            </intent-filter>
+        </receiver>
+
         <service
             android:name="com.genymobile.gnirehtet.GnirehtetService"
             android:enabled="true"

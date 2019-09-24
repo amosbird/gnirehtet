@@ -463,7 +463,6 @@ public class TCPConnection extends AbstractConnection implements PacketSource {
 
     @Override
     public IPv4Packet get() {
-        // TODO update only when necessary
         updateAcknowledgementNumber(packetForClient);
         return packetForClient;
     }

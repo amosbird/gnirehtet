@@ -2,6 +2,7 @@ package com.genymobile.gnirehtet;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.VpnService;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,9 @@ public class GnirehtetActivity extends Activity {
 
     public static final String ACTION_GNIREHTET_START = "com.genymobile.gnirehtet.START";
     public static final String ACTION_GNIREHTET_STOP = "com.genymobile.gnirehtet.STOP";
+    public static final String ACTION_GNIREHTET_CLIP_SET = "com.genymobile.gnirehtet.CLIP_SET";
+    public static final String ACTION_GNIREHTET_CLIP_GET = "com.genymobile.gnirehtet.CLIP_GET";
+
 
     public static final String EXTRA_DNS_SERVERS = "dnsServers";
     public static final String EXTRA_ROUTES = "routes";
@@ -32,6 +36,9 @@ public class GnirehtetActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         handleIntent(getIntent());
+        GnirehtetControlReceiver receiver = new GnirehtetControlReceiver();
+        this.registerReceiver(receiver, new IntentFilter(ACTION_GNIREHTET_CLIP_SET));
+        this.registerReceiver(receiver, new IntentFilter(ACTION_GNIREHTET_CLIP_GET));
     }
 
     private void handleIntent(Intent intent) {

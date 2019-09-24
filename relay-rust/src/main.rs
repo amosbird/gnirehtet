@@ -370,6 +370,7 @@ fn cmd_start(
 
     info!(target: TAG, "Starting client...");
     cmd_tunnel(serial)?;
+    cmd_tunnel2(serial)?;
 
     let mut adb_args = vec![
         "shell",
@@ -425,6 +426,10 @@ fn cmd_tunnel(serial: Option<&str>) -> Result<(), CommandExecutionError> {
         serial,
         vec!["reverse", "localabstract:gnirehtet", "tcp:31416"],
     )
+}
+
+fn cmd_tunnel2(serial: Option<&str>) -> Result<(), CommandExecutionError> {
+    exec_adb(serial, vec!["reverse", "localabstract:spp", "tcp:12345"])
 }
 
 fn cmd_relay() -> Result<(), CommandExecutionError> {

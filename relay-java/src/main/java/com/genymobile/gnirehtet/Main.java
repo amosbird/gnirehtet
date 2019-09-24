@@ -289,6 +289,7 @@ public final class Main {
 
     private static void cmdTunnel(String serial) throws InterruptedException, IOException, CommandExecutionException {
         execAdb(serial, "reverse", "localabstract:gnirehtet", "tcp:31416");
+        execAdb(serial, "reverse", "localabstract:spp", "tcp:12345");
     }
 
     private static void cmdRelay() throws IOException {
