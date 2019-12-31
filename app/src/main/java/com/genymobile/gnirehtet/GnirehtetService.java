@@ -147,7 +147,7 @@ public class GnirehtetService extends VpnService {
             return false;
         }
 
-        setAsUndernlyingNetwork();
+        // setAsUndernlyingNetwork();
         return true;
     }
 
